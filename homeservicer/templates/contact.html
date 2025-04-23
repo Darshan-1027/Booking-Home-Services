@@ -1,0 +1,96 @@
+{% extends 'basic.html' %}
+{% block title %}Contact - HomeService{% endblock %}
+
+
+{% block body %}
+{% include 'messages.html' %}
+{% load static %}
+    <section class="w3l-inner-banner">
+        <div class="wrapper">
+        </div>
+    </section>
+
+    <section class="w3l-contacts-12">
+        <div class="wrapper">
+            <h5 class="heading">Write to us</h5>
+            <h3 class="heading">Get in touch</h3>
+            <div class="contacts12-main">
+                <form action="/SubmitReview" method="post" class="signin-form">
+							{% csrf_token %}
+                    <div class="main-input">
+                        <input type="text" name="Name" placeholder="Your full name" class="contact-input1"
+                            required />
+                        <input type="email" name="Sender" placeholder="Your email address" class="contact-input1"
+                            required />
+                    </div>
+                    <textarea class="contact-textarea" name="Message" placeholder="Your message here"
+                        required></textarea>
+                    <button class="actionbg btn" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div class="display-ad" style="margin: 8px auto;display: block;text-align: center;">
+        <!---728x90--->
+
+    </div>
+    <!-- contacts4 block -->
+    <section class="w3l-contacts-4">
+        <div id="contacts4-block">
+            <div class="contact">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14686.358966777329!2d72.5510106493056!3d23.03883101659463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84f521640d4b%3A0x6853ee97a9a2996b!2sNavrangpura%2C%20Ahmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1744561816162!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="cont-details">
+                    <h5>Location</h5>
+                    <p>Conveniently located to serve you better, our company stands as your trusted partner in home services, offering professional solutions tailored to your needs.
+                    </p>
+                    <address>
+                        <p><span class="fa fa-map-marker"></span> Home maintenance</p>
+                        <p>Maruti Complext, Naranpura,</p>
+                        <p>Ahmedabad.</p>
+                    </address>
+                    <p><span class="fa fa-envelope-open-o"></span> Email: <a
+                            href=" {% static 'mailto:mail@company.com' %} ">contact@gmail.com</a></p>
+                    <p><span class="fa fa-phone"></span> Tel: <a href=" {% static 'tel:+(21)-255-999-8888' %} ">+91 8989898989</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- contacts4 block -->
+
+    <div class="display-ad" style="margin: 8px auto;display: block;text-align: center;">
+        <!---728x90--->
+
+    </div>
+
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-angle-up"></span>
+    </button>
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <!-- /move top -->
+
+
+</body>
+
+{% endblock %}

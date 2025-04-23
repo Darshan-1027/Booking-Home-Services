@@ -1,0 +1,102 @@
+{% extends 'basic.html' %}
+{% block title %}My Bookings - HomeService{% endblock %}
+
+
+{% block body %}
+
+{% load static %}
+{% include 'messages.html' %}
+<section class="w3l-inner-banner">
+        <div class="wrapper">
+        </div>
+    </section>
+
+<section class="w3l-ecom-cart">
+        <div class="covers-main">
+            <div class="wrapper">
+                <h1>My Booking</h1>
+               <div class="shopping-cart">
+     <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr no.</th>
+                    <th>Service</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Payment Method</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+    {% for ub in ubdata %}
+   
+            <tbody>
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td><a href="">{{ub.serviceperson.service_name}}</a></td>
+                    <td>Rs.{{ub.serviceperson.service_price}}</td>
+                    <td><b>{{ub.ubr_status}}</b></td>
+                    <td><b>{{ub.paymethod}}</b></td>
+                  
+                    <td>
+                        <button class="btn btn-danger btn-sm" onclick="window.location.href='/cancelbooking/{{ub.id}}';">Cancel</button>
+                    </td>
+                </tr>
+            </tbody>
+        
+    {% endfor %}</table>
+    </div>
+</div>
+
+
+
+            </div>
+        </div>
+
+        <!-- close script -->
+        <script>
+            var closebtns = document.getElementsByClassName("close");
+            var i;
+
+            for (i = 0; i < closebtns.length; i++) {
+                closebtns[i].addEventListener("click", function () {
+                    this.parentElement.style.display = 'none';
+                });
+            }
+        </script>
+        <!-- //close script -->
+    </section>
+
+
+    <!-- //form 28 block -->
+
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-angle-up"></span>
+    </button>
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <!-- /move top -->
+
+
+</body>
+
+{% endblock %}

@@ -1,0 +1,217 @@
+{% extends 'basic.html' %}
+{% block title %}Home - HomeService{% endblock %}
+{% block body %}
+{% load static %}
+
+<!-- Scripts -->
+<script src="{% static 'assets/js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'assets/js/owl.carousel.js' %}"></script>
+
+{% include 'messages.html' %}
+
+<!-- Hero Slider -->
+<section class="w3l-covers-9-main">
+  <div class="covers-9">
+    <div class="csslider infinity" id="slider1">
+      <input type="radio" name="slides" checked="checked" id="slides_1" />
+      <input type="radio" name="slides" id="slides_2" />
+      <input type="radio" name="slides" id="slides_3" />
+      <input type="radio" name="slides" id="slides_4" />
+      <ul class="banner_slide_bg">
+        <li>
+          <div class="wrapper">
+            <div class="cover-top-center-9">
+              <div class="w3ls_cover_txt-9">
+                <h6 class="tag-cover-9">We provide quality service</h6>
+                <h3 class="title-cover-9">Home Maintenance and Services for you</h3>
+                <p class="para-cover-9">Welcome to our platform dedicated to simplifying home maintenance and services for you...</p>
+                <a href="/about" class="actionbg button-cover-9">Read More</a>
+                <a href="/feedback.html" class="actionbg-border button-cover-9">Get in touch</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <!-- Second Slide with unique style -->
+        <li class="slide-2">
+          <div class="wrapper">
+            <div class="cover-top-center-9">
+              <div class="w3ls_cover_txt-9">
+                <h6 class="tag-cover-9">We provide quality service</h6>
+                <h3 class="title-cover-9">We are Professional and provide repair Services.</h3>
+                <p class="para-cover-9">Rely on our team of dedicated professionals for expert repair services that prioritize quality and efficiency...</p>
+                <a href="/about" class="actionbg button-cover-9">Read More</a>
+                <a href="/feedback.html" class="actionbg-border button-cover-9">Get in touch</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="wrapper">
+            <div class="cover-top-center-9">
+              <div class="w3ls_cover_txt-9">
+                <h6 class="tag-cover-9">We provide quality service</h6>
+                <h3 class="title-cover-9">The Best company to provide home Services</h3>
+                <p class="para-cover-9">Choose the best in home services with our company, dedicated to delivering unparalleled quality...</p>
+                <a href="/about" class="actionbg button-cover-9">Read More</a>
+                <a href="/feedback.html" class="actionbg-border button-cover-9">Get in touch</a>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="wrapper">
+            <div class="cover-top-center-9">
+              <div class="w3ls_cover_txt-9">
+                <h6 class="tag-cover-9">We provide quality service</h6>
+                <h3 class="title-cover-9">The Most targeted cleaning services.</h3>
+                <p class="para-cover-9">Experience the most targeted cleaning services tailored to meet your specific needs, ensuring every corner...</p>
+                <a href="/about" class="actionbg button-cover-9">Read More</a>
+                <a href="/feedback.html" class="actionbg-border button-cover-9">Get in touch</a>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div class="arrows">
+        <label for="slides_1"></label>
+        <label for="slides_2"></label>
+        <label for="slides_3"></label>
+        <label for="slides_4"></label>
+      </div>
+      <div class="navigation">
+        <div>
+          <label for="slides_1"></label>
+          <label for="slides_2"></label>
+          <label for="slides_3"></label>
+          <label for="slides_4"></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features Section -->
+<section class="w3l-feature-9">
+  <div class="main-w3">
+    <div class="wrapper">
+      <div class="d-flex main-cont-wthree-fea">
+        <div class="grids-feature">
+          <span class="fa fa-bath"></span>
+          <h4>Best Quality</h4>
+          <p>Unparalleled excellence in home services.</p>
+        </div>
+        <div class="grids-feature">
+          <span class="fa fa-cogs"></span>
+          <h4>Expert Advice</h4>
+          <p>Expert guidance from seasoned professionals.</p>
+        </div>
+        <div class="grids-feature">
+          <span class="fa fa-users"></span>
+          <h4>Labour Expertise</h4>
+          <p>Skilled labor for precise, reliable work.</p>
+        </div>
+        <div class="grids-feature">
+          <span class="fa fa-clock-o"></span>
+          <h4>On Time Service</h4>
+          <p>Prompt and reliable assistance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Service Categories Carousel -->
+<section class="w3l-grids-4">
+  <div id="grids4-block">
+    <div class="wrapper">
+      <h5 class="heading">Service Categories</h5>
+      <h3 class="heading">What we offer</h3>
+
+      <div class="category-grid">
+        {% for i in servdata %}
+        <div class="category-card">
+          <a href="/catwiseservice/{{i.id}}">
+            <img src="{{ i.service_category_photo.url }}" alt="{{i.service_category_name}}">
+          </a>
+          <h5>{{i.service_category_name}}</h5>
+        </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Back to Top Button -->
+<button onclick="topFunction()" id="movetop" title="Go to top">
+  <span class="fa fa-angle-up"></span>
+</button>
+
+<script>
+window.onscroll = function () {
+  document.getElementById("movetop").style.display =
+    (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) ? "block" : "none";
+};
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
+$('.owl-carousel').owlCarousel({
+  loop: true,
+  margin: 20,
+  autoplay: true,
+  autoplayTimeout: 2500,
+  responsive: {
+    0: { items: 1, nav: true },
+    600: { items: 2, nav: false },
+    1000: { items: 3, nav: true }
+  }
+});
+
+$('.card').hover(function(){
+  $(this).css('transform', 'scale(1.05)');
+}, function(){
+  $(this).css('transform', 'scale(1)');
+});
+
+$(document).ready(function() {
+  let slideIndex = 0;
+  const slides = $('#slider1 input'); // Get all slide inputs
+
+  // Function to change slide
+  function showNextSlide() {
+    slideIndex = (slideIndex + 1) % slides.length; // Loop back to the first slide after the last one
+    slides[slideIndex].checked = true; // Change the checked slide
+  }
+
+  // Set an interval to auto-slide every 5 seconds
+  setInterval(showNextSlide, 2500); // 2500 ms = 2.5 seconds
+});
+</script>
+
+<!-- Custom CSS for the second slide -->
+<style>
+/* Target the second slide and style it differently */
+.slide-2 {
+  background: #f0f0f0; /* Light gray background */
+  color: #333; /* Dark text color */
+}
+
+.slide-2 .w3ls_cover_txt-9 {
+  text-align: center; /* Center-align text */
+}
+
+/* Make the buttons in the second slide stand out */
+.slide-2 .actionbg {
+  background-color: #ff5733; /* A different button color for the second slide */
+}
+
+/* Optional: Add some padding or margin to the second slide */
+.slide-2 .wrapper {
+  padding: 20px;
+}
+</style>
+
+{% endblock %}

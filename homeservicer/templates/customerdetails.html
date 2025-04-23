@@ -1,0 +1,72 @@
+{% extends 'basic.html' %}
+{% block title %}Profile - HomeService{% endblock %}
+{% block body %}
+{% load static %}
+    <section class="w3l-inner-banner">
+        <div class="wrapper">
+        </div>
+    </section>
+
+    <!-- teams 15 -->
+    <section class="w3l-teams-15">
+        <div class="teams15">
+            <div class="wrapper">
+                <div class="grid grid-column-2 ">
+                    <div class="column2">
+                        <h3 class="team-head"><span> {{profiledata.l_id.name}} </span></h3>
+                        <p class="team-para">Area <span>{{profiledata.area_id}}</span> </p>
+                        <p class="team-para">City <span>{{profiledata.city_id}}</span></p>
+                        <p class="team-para">State <span>{{profiledata.state_id}}</span></p>
+                        <p class="team-para">Phone <span>{{profiledata.l_id.phone}}</span></p>
+                        <p class="team-para">Mail <span><a href=" {% static 'mailto:{{profiledata.l_id.email}}' %} ">{{profiledata.l_id.email}}</a></span></p>
+                        <p class="team-para">Address location <span>{{profiledata.address}}</span></p>
+
+                    </div>
+                    <div class="column1">
+                        <img class="img-responsive" src="/media/{{profiledata.l_id.dp}}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- teams 15 -->
+
+    <div class="display-ad" style="margin: 8px auto;display: block;text-align: center;">
+        <!---728x90--->
+
+    </div>
+
+    <!-- footer-28 block -->
+
+
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-angle-up"></span>
+    </button>
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <!-- /move top -->
+
+
+</body>
+
+
+{% endblock %}

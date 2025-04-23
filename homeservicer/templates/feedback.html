@@ -1,0 +1,126 @@
+{% extends 'basic.html' %}
+
+{% block title %} Feedback {% endblock %}
+
+{% block body %}
+    {% load static %}
+
+{% include 'messages.html' %}
+{% load static %}
+
+
+<style>
+    .rating span{
+        font-size:30px !important;
+    }
+
+    .text-blue{
+        color:blue;
+    }
+</style>
+
+ <section class="w3l-inner-banner">
+        <div class="wrapper">
+        </div>
+    </section>
+
+    <section class="w3l-breadcrumb">
+        <div class="container">
+            <ul class="breadcrumbs-custom-path">
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Feedback</li>
+            </ul>
+        </div>
+    </section>
+
+    <!--//inner-page-->
+    <div style="margin: 8px auto; display: block; text-align:center;">
+        <!---728x90--->
+    </div>
+<!-- /feedback section -->
+<section class="w3l-contacts-12">
+    <div class="wrapper">
+        <h5 class="heading">Write to us</h5>
+        <h3 class="heading">Get in touch</h3>
+        <div class="contacts12-main">
+            <form action="/storefeedback" method="post" class="signin-form">
+                {% csrf_token %}
+                <div class="main-input mt-5">
+                    <input type="text" name="username" placeholder="Username" class="contact-input1" required>
+                    <input type="email" name="email" placeholder="Email" class="contact-input1" required>
+                </div>
+                <br>
+                <input type="text" pattern="[56789][0-9]{9}" name="contact" oninput="limitInputLength(this,10);" minlength="10" placeholder="Contact" class="contact-input1" maxlength="10" required>
+                <textarea name="message" placeholder="Message" class="contact-textarea" required></textarea>
+
+                <div class="rating">
+                    <p>Rating:
+                        <span class="fa fa-star" data-rating="1"></span>
+                        <span class="fa fa-star" data-rating="2"></span>
+                        <span class="fa fa-star" data-rating="3"></span>
+                        <span class="fa fa-star" data-rating="4"></span>
+                        <span class="fa fa-star" data-rating="5"></span>
+                    </p>
+                    <input type="hidden" name="rating" id="rating">
+                </div>
+                <div class="text-right">
+                    <button type="submit" class="actionbg btn">Submit Feedback</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!-- //feedback section -->
+ <section class="w3l-contacts-4">
+        <div id="contacts4-block">
+            <div class="contact">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14686.358966777329!2d72.5510106493056!3d23.03883101659463!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e84f521640d4b%3A0x6853ee97a9a2996b!2sNavrangpura%2C%20Ahmedabad%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1744561816162!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <div class="cont-details">
+                    <h5>Location</h5>
+                    <p>Conveniently located to serve you better, our company stands as your trusted partner in home services, offering professional solutions tailored to your needs.
+                    </p>
+                    <address>
+                        <p><span class="fa fa-map-marker"></span> Home maintenance</p>
+                        <p>Maruti Complext, Naranpura,</p>
+                        <p>Ahmedabad.</p>
+                    </address>
+                    <p><span class="fa fa-envelope-open-o"></span> Email: <a
+                            href=" {% static 'mailto:mail@company.com' %} ">contact@gmail.com</a></p>
+                    <p><span class="fa fa-phone"></span> Tel: <a href=" {% static 'tel:+(21)-255-999-8888' %} ">+91 8989898989</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div style="margin: 8px auto; display: block; text-align:center;">
+        <!---728x90--->
+    </div>
+<script>
+    // Function to handle star ratings
+  document.addEventListener('DOMContentLoaded', function () {
+    const stars = document.querySelectorAll('.fa-star');
+
+    stars.forEach(star => star.addEventListener('click', rateStar));
+
+    function rateStar(event) {
+        const rating = event.target.getAttribute('data-rating');
+        document.getElementById('rating').value = rating;
+
+        // Loop through all stars
+        stars.forEach(star => {
+            const starRating = parseInt(star.getAttribute('data-rating'));
+
+            // Check if the star's rating is less than or equal to the clicked star's rating
+            if (starRating <= rating) {
+                star.classList.add('text-blue'); // Add 'text-success' class to highlight the star
+            } else {
+                star.classList.remove('text-blue'); // Remove 'text-success' class to unhighlight the star
+            }
+        });
+    }
+});
+
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends 'basic.html' %}
+{% block title %}Bookings - HomeService{% endblock %}
+
+
+{% block body %}
+
+{% load static %}
+{% include 'messages.html' %}
+<section class="w3l-inner-banner">
+        <div class="wrapper">
+        </div>
+    </section>
+
+<section class="w3l-ecom-cart">
+        <div class="covers-main">
+            <div class="wrapper">
+                <h1>My Bookings</h1>
+                <div class="shopping-cart">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sr no.</th>
+                                    <th>Service</th>
+                                    <th>Customer Name</th>
+                                    <th>Status</th>
+                                    <th>Payment Method</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for ub in ubdata %}
+                                {% if not ub.rejected %}
+                                <tr>
+                                    <td>{{forloop.counter}}</td>
+                                    <td>
+                                        <a href="{% static 'ecommerce-single.html' %}">{{ub.serviceperson.service_name}}</a>
+                                    </td>
+                                    <td>
+                                        <p class="mb-1"><b>Name:</b> {{ub.l_id.name}}</p>
+                                        <p class="mb-0"><b><a href="viewDetails/{{ub.l_id.id}}" class="text-primary">View Details</a></b></p>
+                                    </td>
+                                    <td><b>{{ub.ubr_status}}</b></td>
+                                    <td>{{ub.paymethod}}</td>
+                                    <td>
+                                        {% if ub.show_approve_button %}
+                                        <button class="btn btn-success btn-sm mb-1" onclick="window.location.href='/acceptbooking/{{ub.id}}';">Approve</button>
+                                        {% endif %}
+                                        <button class="btn btn-danger btn-sm" onclick="window.location.href='/rejectbooking/{{ub.id}}';">Reject</button>
+                                    </td>
+                                </tr>
+                                {% endif %}
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+</div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <!-- close script -->
+        <script>
+            var closebtns = document.getElementsByClassName("close");
+            var i;
+
+            for (i = 0; i < closebtns.length; i++) {
+                closebtns[i].addEventListener("click", function () {
+                    this.parentElement.style.display = 'none';
+                });
+            }
+        </script>
+        <!-- //close script -->
+    </section>
+
+
+    <!-- //form 28 block -->
+
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-angle-up"></span>
+    </button>
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <!-- /move top -->
+
+
+</body>
+
+{% endblock %}

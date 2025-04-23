@@ -1,0 +1,40 @@
+{% if messages %}
+  <style>
+    .custom-toast {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      min-width: 250px;
+      animation: slideIn 0.5s ease;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(100%); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+  </style>
+
+  <div id="toast-container">
+    {% for message in messages %}
+      <div class="alert {{ message.tags }} alert-dismissible fade show custom-toast" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {% endfor %}
+  </div>
+
+  <script>
+    // Automatically dismiss toast messages after 3 seconds
+    setTimeout(function () {
+      var alerts = document.querySelectorAll('.custom-toast');
+      alerts.forEach(function (alert) {
+        alert.classList.remove('show');
+        alert.classList.add('fade');
+        setTimeout(() => alert.remove(), 5000); // Remove after fade out
+      });
+    }, 3000);
+  </script>
+{% endif %}

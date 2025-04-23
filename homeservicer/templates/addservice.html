@@ -1,0 +1,117 @@
+{% extends 'basic.html' %}
+{% block title %}Add Service - HomeService{% endblock %}
+
+
+{% block body %}
+
+{% load static %}
+
+<section class="w3l-inner-banner">
+        <div class="wrapper">
+        </div>
+    </section>
+{% include 'messages.html' %}
+<!-- forms-17 -->
+	<section class="w3l-forms-17">
+		<div id="forms-17_sur">
+
+			<div class="display-ad" style="margin: 8px auto;display: block;text-align: center;">
+				<!---728x90--->
+
+			</div>
+			<div class="wrapper">
+				<div class="forms-17-top">
+					<div class="forms-17-text">
+						<div class="top">
+							<span class="fa fa-user"></span>
+							<h4>Add Service</h4>
+							<p>Fill your service details</p>
+						</div>
+						<ul class="bottom-list">
+							<li><span class="fa fa-check"></span> Fusce rutrum quam a ultrices rhoncus. Nulla eu ipsum
+								tempus est suscipit et vitae nulla. Once
+								aute irure dolor.</li>
+							<li><span class="fa fa-check"></span> Nulla eu ipsum tempus est suscipit et vitae nulla.
+								Once
+								autet</li>
+							<li><span class="fa fa-check"></span> Fusce rutrum quam a ultrices rhoncus.</li>
+						</ul>
+					</div>
+					<div class="forms-17-form">
+						<div class="form-17-tp">
+							<h6>Service Details</h6>
+							<form method="post" action="/servicesubmit" enctype="multipart/form-data" class="contact-form">
+    {% csrf_token %}
+    <div class="form-input">
+        <input type="text" name="name" placeholder="Service Name" required />
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" name="desc" placeholder="Service Description" required>
+    </div>
+    <div class="form-input">
+        <input type="text" name="price" placeholder="Service Charge" required />
+    </div>
+
+    <div class="form-group">
+        <label>Choose Service Category:</label><br>
+        <select id="servicename" name="servicename" required>
+            <option selected disabled>Select Option</option>
+            {% for s in servicedetail %}
+            <option value="{{s.id}}">{{s.service_category_name}}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Upload Service Image:</label><br>
+        <input type="file" name="service_image" accept="image/" required>
+    </div>
+
+    <div class="align-left-right margin-create">
+        <button type="submit" class="btn">Add</button>
+    </div>
+</form>
+
+						</div>
+					</div>
+				</div>
+				<div class="btn btn-home text-center">
+					<a href="/" class="">Back to home <span class="fa fa-long-arrow-right"></a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- forms-17 -->
+
+    <!-- //form 28 block -->
+
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+        <span class="fa fa-angle-up"></span>
+    </button>
+    <script>
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("movetop").style.display = "block";
+            } else {
+                document.getElementById("movetop").style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+    <!-- /move top -->
+
+
+</body>
+
+{% endblock %}
