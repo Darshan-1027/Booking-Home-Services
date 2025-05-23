@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-7kvd8h)(j6cuu-so4$g02i7iag9+f!ru!^&yk=bk7hawmr_6ir
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'booking-home-services-production.up.railway.app',
+    '127.0.0.1',  # keep this for local dev
+    'localhost'   # optional
+]
 
 
 # Application definition
