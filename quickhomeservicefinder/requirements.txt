@@ -1,0 +1,14 @@
+Django>=3.2,<5.0
+django-jazzmin @ git+https://github.com/farridav/django-jazzmin.git@d269874c96fe5ff6d231c3017cdd4650bc2f3105
+djangorestframework==3.16.0
+executing==2.2.0
+gunicorn>=20.1.0,<22.0.0
+mysql-connector==2.2.9
+packaging==25.0
+pillow==10.4.0
+razorpay==1.4.2
+referencing==0.36.2
+reportlab==4.3.1
+requests==2.32.3
+requests-oauthlib==2.0.0
+setuptools==78.1.0
